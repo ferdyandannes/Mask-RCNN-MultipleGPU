@@ -65,8 +65,8 @@ class InferenceConfig(BalloonConfig):
     GPU_COUNT = 2
     IMAGES_PER_GPU = 1
     DETECTION_MIN_CONFIDENCE = 0.0
-    DETECTION_MAX_INSTANCES = 200
-    DETECTION_NMS_THRESHOLD = 0.0
+    DETECTION_MAX_INSTANCES = 300
+    DETECTION_NMS_THRESHOLD = 1.0
     POST_NMS_ROIS_INFERENCE = 300
 config = InferenceConfig()
 config.display()
@@ -157,34 +157,9 @@ main_path = '/media/ee401_2/SPML/Danny/Mask_RCNN-master/UCF101/images/'
 image2 = skimage.io.imread(os.path.join(IMAGE_DIR, 'ski.jpg'))
 main_path_save = '/media/ee401_2/SPML/Danny/Mask_RCNN-master/UCF101/label_images/'
 
-for i2 in range(82,914):
+for i2 in range(0,914):
     
-    kosongan = np.zeros((300,100), dtype=np.float64)
-    sekorrr = np.zeros((300,25), dtype=np.float64)
-    flag3 = 0
-    flag4 = 0
-    flag5 = 0
-    flag6 = 0
-    flag7 = 0
-    flag8 = 0
-    flag9 = 0
-    flag10 = 0
-    flag11 = 0
-    flag12 = 0
-    flag13 = 0
-    flag14 = 0
-    flag15 = 0
-    flag16 = 0
-    flag17 = 0
-    flag18 = 0
-    flag19 = 0
-    flag20 = 0
-    flag21 = 0
-    flag22 = 0
-    flag23 = 0
-    flag24 = 0
-    flag25 = 0
-    flag26 = 0
+
 
     all_header_files = glob.glob(main_path+'/'+folder_name[i2][0]+'/'+class_name[i2][0]+'/*.jpg')
     
@@ -196,7 +171,34 @@ for i2 in range(82,914):
     
     for j in range(0,len(all_header_files)):
         
-        print(all_header_files[j])
+        kosongan = np.zeros((300,100), dtype=np.float64)
+        sekorrr = np.zeros((300,25), dtype=np.float64)
+        flag3 = 0
+        flag4 = 0
+        flag5 = 0
+        flag6 = 0
+        flag7 = 0
+        flag8 = 0
+        flag9 = 0
+        flag10 = 0
+        flag11 = 0
+        flag12 = 0
+        flag13 = 0
+        flag14 = 0
+        flag15 = 0
+        flag16 = 0
+        flag17 = 0
+        flag18 = 0
+        flag19 = 0
+        flag20 = 0
+        flag21 = 0
+        flag22 = 0
+        flag23 = 0
+        flag24 = 0
+        flag25 = 0
+        flag26 = 0
+
+        #print(all_header_files[j])
         image1 = skimage.io.imread(all_header_files[j])
             
         image=([image1, image2])
@@ -207,7 +209,8 @@ for i2 in range(82,914):
         i=0
 
         detected = r['class_ids'].size
-        for i in range(detected):
+        #print(detected)
+        for i in range(0,detected):
             bbox = r['rois'][i]
             kelas = r['class_ids'][i]
             skor = r['scores'][i]
